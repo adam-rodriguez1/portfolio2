@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-bg dark:bg-darkBg;
+}
+
+body {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #000000;
+}
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+}
+img {
+  max-width: 100%; /* Empêche les images de dépasser la largeur de leur conteneur */
+  height: auto; /* Maintient le ratio de l'image */
+  display: block; /* Corrige les marges indésirables */
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
