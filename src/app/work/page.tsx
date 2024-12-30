@@ -14,7 +14,7 @@ const Card = ({ project }: { project: any }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 } 
+      { threshold: 0.3 } // Trigger when 30% of the card is visible
     );
 
     if (cardRef.current) {
@@ -32,7 +32,9 @@ const Card = ({ project }: { project: any }) => {
     <div
       ref={cardRef}
       className={`transition-opacity duration-500 ease-out ${
-        isVisible ? "opacity-100 translate-y-0 motion-translate-x-in-[-24%] motion-translate-y-in-[0%]" : "opacity-0 translate-y-10"
+        isVisible
+          ? "opacity-100 translate-y-0 motion-translate-x-in-[-24%] motion-translate-y-in-[0%]"
+          : "opacity-0 translate-y-10"
       }`}
     >
       <div className="border-border dark:border-darkBorder shadow-light dark:shadow-dark rounded-base border-2 bg-main p-4 sm:p-5">
@@ -49,6 +51,24 @@ const Card = ({ project }: { project: any }) => {
         <div className="text-text mt-5 font-base">
           <h2 className="text-xl font-heading sm:text-2xl">{project.name}</h2>
           <p className="mt-2">{project.description}</p>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border dark:border-darkBorder rounded-base border-2 bg-white text-center text-sm font-medium px-4 py-2 transition-all hover:bg-mainAccent"
+            >
+              Visit
+            </a>
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border dark:border-darkBorder rounded-base border-2 bg-white text-center text-sm font-medium px-4 py-2 transition-all hover:bg-mainAccent"
+            >
+              Github
+            </a>
+          </div>
         </div>
       </div>
     </div>
